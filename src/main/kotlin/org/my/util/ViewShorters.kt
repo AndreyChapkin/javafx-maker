@@ -188,6 +188,13 @@ fun Pane.label(text: String? = null, filler: (Label.() -> Unit)? = null): Label 
         }
     }
 
+fun Pane.labelAln(text: String? = null, filler: (Label.() -> Unit)? = null): Label = Label(text)
+    .also {
+        if (filler != null) {
+            it.filler()
+        }
+    }
+
 // TODO: choose right and necessary styles
 fun Pane.selectableText(text: String? = null, filler: (TextField.() -> Unit)? = null): TextField =
     TextField(text).apply {

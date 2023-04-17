@@ -42,8 +42,8 @@ inline fun <T> ObservableList<T>.addSimpleListChangeListener(crossinline listene
     return resultListener
 }
 
-inline fun <T> Property<T>.addSimpleChangeListener(crossinline listener: (T) -> Unit): ChangeListener<T> {
-    val resultListener = ChangeListener { _, _, newValue -> listener(newValue) }
+inline fun <T> Property<T>.addSimpleChangeListener(crossinline listener: (T, T) -> Unit): ChangeListener<T> {
+    val resultListener = ChangeListener { _, prevValue, newValue -> listener(prevValue, newValue) }
     this.addListener(resultListener)
     return resultListener
 }
